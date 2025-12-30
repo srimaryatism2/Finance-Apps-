@@ -133,7 +133,7 @@ Berikan analisis finansial lengkap.
         ]
     )
 
-    return response.choices[0].message["content"]
+    return response.choices[0].message.content   # ✔ FIXED
 
 
 # ==========================
@@ -187,8 +187,9 @@ with st.container():
                     ]
                 )
 
-                ai_msg = chat_response.choices[0].message["content"]
-                st.session_state.chat_history.append(("ai", ai_msg))
+                ai_msg = chat_response.choices[0].message.content   # ✔ FIXED
+
+                st.session_state.chat_history.append(("assistant", ai_msg))
                 st.rerun()
 
             if reset:
